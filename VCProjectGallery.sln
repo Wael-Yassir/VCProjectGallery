@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCProjectGallery.Data", "VCProjectGallery.Data\VCProjectGallery.Data.csproj", "{8177C3F9-AFEA-4A08-8FA4-E1DB822472D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Data", "VCProjectGallery.Data\VCProjectGallery.Data.csproj", "{8177C3F9-AFEA-4A08-8FA4-E1DB822472D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCProjectGallery.Models", "VCProjectGallery.Models\VCProjectGallery.Models.csproj", "{0B707C9B-91C1-4A62-9AD1-98294D22C94E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Models", "VCProjectGallery.Models\VCProjectGallery.Models.csproj", "{0B707C9B-91C1-4A62-9AD1-98294D22C94E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCProjectGallery.Web", "VCProjectGallery.Web\VCProjectGallery.Web.csproj", "{D411E901-1929-4776-91B7-54876DF5B280}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Web", "VCProjectGallery.Web\VCProjectGallery.Web.csproj", "{D411E901-1929-4776-91B7-54876DF5B280}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Docs", "_Docs", "{200DFD64-AA18-47F6-936A-CA279A233599}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Entities.png = Docs\Entities.png
+		Docs\Features.xlsx = Docs\Features.xlsx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
