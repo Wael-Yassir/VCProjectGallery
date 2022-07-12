@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import accountsRoutes from '@/features/Accounts/accounts-routes'
+import projectsRoutes from '@/features/Projects/projects-routes'
 
 Vue.use(VueRouter)
 
 const routes = [
   ...accountsRoutes,
+  ...projectsRoutes,
   {
     path: '*',
     name: 'error404',
