@@ -2,6 +2,7 @@
   <div>
     <v-container>
       <h1>Hello, from projects</h1>
+      <fa :icon="[ 'far', 'address-book' ]"/>
       <v-data-table
         dense
         :headers="headers"
