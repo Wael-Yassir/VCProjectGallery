@@ -9,9 +9,13 @@ using VCProjectGallery.Models;
 using VCProjectGallery.Models.Project;
 using Microsoft.EntityFrameworkCore;
 using VCProjectGallery.Models.Base;
+using Microsoft.AspNetCore.Authorization;
+using VCProjectGallery.API.Authentication;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace VCProjectGallery.Data.Controllers
 {
+	[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProjectsController : ApiBaseController<Project>
@@ -24,5 +28,17 @@ namespace VCProjectGallery.Data.Controllers
             _context = context;
         }
 
-    }
+		[AllowAnonymous]
+        public override object Get()
+		{
+			return base.Get();
+		}
+
+
+		[AllowAnonymous]
+		public override ActionResult<Project> Get(Guid key)
+		{
+			return base.Get(key);
+		}
+	}
 }
