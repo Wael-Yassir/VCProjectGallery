@@ -45,7 +45,9 @@ namespace VCProjectGallery.Data
                 option.AddPolicy(name: _allPolicy, 
                                  policy =>
                                  {
-                                    policy.AllowAnyOrigin();
+									 policy.AllowAnyOrigin()
+										   .AllowAnyHeader()
+										   .AllowAnyMethod();
                                  });
             });
 

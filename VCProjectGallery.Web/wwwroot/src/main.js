@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(fas, far, fab)
 
-Vue.component('fa', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // fontawesome end section
 

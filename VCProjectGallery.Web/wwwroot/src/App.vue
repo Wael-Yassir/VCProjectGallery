@@ -53,3 +53,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+  html * {
+    font-family: Karla, serif;
+  }
+</style>
