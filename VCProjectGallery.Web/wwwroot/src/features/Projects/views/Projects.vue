@@ -35,7 +35,7 @@ export default {
         id: null,
         search: null
       },
-      loadingState: true,
+      loadingState: false,
       headers: [
         { text: "Name", value: "Name", width: "110px" }
       ]
@@ -48,7 +48,10 @@ export default {
     getData() {
       Api.get()
         .then((res) => {
+          this.loadingState = true;
           this.entities = res.data.$values;
+          this.loadingState = false;
+
           console.log(this.entities);
         })
         .catch((err) => {

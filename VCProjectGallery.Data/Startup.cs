@@ -19,6 +19,8 @@ namespace VCProjectGallery.Data
 {
     public class Startup
     {
+        private readonly string _allPolicy = "All";
+
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
@@ -32,6 +34,15 @@ namespace VCProjectGallery.Data
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(option =>
+            {
+                // TODO: Change on publish
+                option.AddPolicy(name: _allPolicy, 
+                                 policy =>
+                                 {
+                                    policy.AllowAnyOrigin();
+                                 });
+            });
 
             services.AddControllers()
             .AddJsonOptions(options => {
@@ -69,12 +80,12 @@ namespace VCProjectGallery.Data
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(_allPolicy);
 
             app.UseAuthentication();
 
             app.UseAuthorization();
-
-            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
