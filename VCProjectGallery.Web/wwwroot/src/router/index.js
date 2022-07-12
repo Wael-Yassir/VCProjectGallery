@@ -9,7 +9,7 @@ const routes = [
   {
     path: '*',
     name: 'error404',
-    component: () => import('../features/Shared/Error404.vue')
+    component: () => import('../features/Shared/views/Error404.vue')
   }
 ]
 
