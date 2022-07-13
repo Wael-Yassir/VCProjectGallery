@@ -2,6 +2,16 @@
   <v-app>
     <v-app-bar app color="primary" dark> </v-app-bar>
 
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
     <v-main>
       <router-view />
     </v-main>
@@ -9,6 +19,7 @@
 </template>
 
 <script>
+
 export default {
   name: "App",
 
@@ -19,7 +30,7 @@ export default {
 </script>
 
 <style>
-html * {
-  font-family: Karla, serif;
-}
+  html * {
+    font-family: Karla, serif;
+  }
 </style>

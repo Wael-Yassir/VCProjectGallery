@@ -13,7 +13,7 @@ using VCProjectGallery.API.Authentication;
 
 namespace VCProjectGallery.API.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("Api/[controller]/[action]")]
 	[ApiController]
 	public class AuthenticateController : Controller
 	{
@@ -29,7 +29,6 @@ namespace VCProjectGallery.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("login")]
 		public async Task<IActionResult> Login([FromBody] LoginModel model)
 		{
 			var user = await userManager.FindByNameAsync(model.Username);
@@ -68,7 +67,6 @@ namespace VCProjectGallery.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("register")]
 		public async Task<IActionResult> Register([FromBody] RegisterModel model)
 		{
 			var userExists = await userManager.FindByNameAsync(model.Username);
@@ -91,7 +89,6 @@ namespace VCProjectGallery.API.Controllers
 		}
 
 		[HttpPost]
-		[Route("register-admin")]
 		public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
 		{
 			var userExists = await userManager.FindByNameAsync(model.Username);
