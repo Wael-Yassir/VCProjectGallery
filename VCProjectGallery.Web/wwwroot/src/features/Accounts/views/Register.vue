@@ -3,7 +3,7 @@
     <v-card
       class="mx-auto pb-5 pt-4 rounded-xl"
       max-width="500"
-      height="475"
+      height="495"
       style="z-index: 1000"
     >
       <v-card-title class="mx-auto justify-center flex-column">
@@ -14,7 +14,7 @@
       <v-form v-model="valid" @submit.prevent="submit" class="pa-3 mt-0 pt-0">
         <v-divider></v-divider>
         <v-container>
-          <v-row align="center" justify="center" style="height: 275px">
+          <v-row align="center" justify="center" style="height: 300px">
             <v-col cols="12" md="10">
               <v-text-field
                 v-model="userName"
@@ -34,7 +34,9 @@
               </v-text-field>
               <v-text-field
                 v-model="password"
-                :append-icon="passwordIsVisible ? 'fal fa-eye' : 'fal fa-eye-slash'"
+                :append-icon="
+                  passwordIsVisible ? 'fal fa-eye' : 'fal fa-eye-slash'
+                "
                 :rules="rules"
                 :type="passwordIsVisible ? 'text' : 'password'"
                 label="Password"
@@ -43,6 +45,12 @@
                 class="pb-3"
               >
               </v-text-field>
+              <v-subheader
+                class="red--text font-weight-black"
+                style="display: block; text-align: center; margin-top: 5px;"
+              >
+                {{ errorMsg }}
+              </v-subheader>
             </v-col>
           </v-row>
           <v-row justify="center" aling="center">
@@ -65,7 +73,7 @@
 </template>
 
 <script>
-import ApiService from '../services/accounts-service';
+import ApiService from "../services/accounts-service";
 
 export default {
   data() {
@@ -76,29 +84,36 @@ export default {
       password: "",
       userName: "",
       userEmail: "",
-      rules: [
-        (val) => !!val || "This field is required!",
-      ]
-    }
+      rules: [(val) => !!val || "This field is required!"],
+      errorMsg: "",
+    };
   },
   methods: {
     clear() {
-      this.userName = ""
-      this.password = ""
-      this.userEmail = ""
+      this.userName = "";
+      this.password = "";
+      this.userEmail = "";
     },
     submit() {
+      this.loading = true;
+
       const credential = {
-        "Username": this.userName,
-        "Email": this.userEmail,
-        "Password": this.password
-      }
+        Username: this.userName,
+        Email: this.userEmail,
+        Password: this.password,
+      };
 
       ApiService.register(credential)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    }
-  }
+        .then(() => {
+          this.loading = false;
+          this.$router.push("/login");
+        })
+        .catch(() => {
+          this.loading = false;
+          this.errorMsg = "Enter Valid Email Or Strong Password!";
+        });
+    },
+  },
 };
 </script>
 

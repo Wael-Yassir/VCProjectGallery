@@ -1,13 +1,9 @@
 import Api from "@/features/Shared/services/api";
 
-const loginBaseUrl = "api/Authenticate/login";
-const registerBaseUrl = "api/Authenticate/register";
 
+const BaseUrl = "api/Authenticate/register";
 export default {
-  login(credential) {
-    return Api().post(loginBaseUrl, credential)
-  },
   register(credential) {
-    return Api().post(registerBaseUrl, credential);
+    return Api().post(BaseUrl, credential);
   }
 }

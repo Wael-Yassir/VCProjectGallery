@@ -21,16 +21,26 @@
                 :rules="rules"
                 label="User Name"
                 placeholder="user"
-              ></v-text-field>
+              >
+              </v-text-field>
               <v-text-field
                 v-model="password"
-                :append-icon="passwordIsVisible ? 'fal fa-eye' : 'fal fa-eye-slash'"
+                :append-icon="
+                  passwordIsVisible ? 'fal fa-eye' : 'fal fa-eye-slash'
+                "
                 :rules="rules"
                 :type="passwordIsVisible ? 'text' : 'password'"
                 label="Password"
                 placeholder="Password"
                 @click:append="passwordIsVisible = !passwordIsVisible"
-              ></v-text-field>
+              >
+              </v-text-field>
+              <v-subheader
+                class="red--text font-weight-black"
+                style="display: block; text-align: center; margin-top: 15px"
+              >
+                {{ errorMsg }}
+              </v-subheader>
             </v-col>
           </v-row>
           <v-row justify="center" aling="center">
@@ -46,6 +56,23 @@
               </v-btn>
             </v-col>
           </v-row>
+          <router-link
+            to="/register"
+            class="
+              light-blue--text
+              text--darken-3
+              font-weight-black
+              text-decoration-underline
+            "
+            style="
+              display: block;
+              text-align: center;
+              margin-top: 15px;
+              cursor: pointer;
+            "
+          >
+            Register
+          </router-link>
         </v-container>
       </v-form>
     </v-card>
@@ -53,7 +80,7 @@
 </template>
 
 <script>
-import ApiService from '../services/accounts-service';
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -63,27 +90,37 @@ export default {
       passwordIsVisible: false,
       password: "",
       userName: "",
-      rules: [
-        (val) => !!val || "This field is required!",
-      ],
-    }
+      rules: [(val) => !!val || "This field is required!"],
+      errorMsg: "",
+    };
   },
   methods: {
+    ...mapActions(["setToken", "setUser"]),
     clear() {
-      this.userName = ""
-      this.password = ""
+      this.userName = "";
+      this.password = "";
     },
     submit() {
-      const credential = {
-        "Username": this.userName,
-        "Password": this.password
-      }
+      this.loading = true;
 
-      ApiService.login(credential)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    }
-  }
+      const credential = {
+        Username: this.userName,
+        Password: this.password,
+      };
+
+      this.$store
+        .dispatch("login", credential)
+        .then(() => {
+          this.loading = false;
+          this.$store.commit("setUser", { Username: credential.Username });
+          this.$router.push("/projects");
+        })
+        .catch(() => {
+          this.loading = false;
+          this.errorMsg = "Login Error!";
+        });
+    },
+  },
 };
 </script>
 
