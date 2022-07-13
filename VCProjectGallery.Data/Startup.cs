@@ -19,12 +19,14 @@ using VCProjectGallery.API.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using VueCliMiddleware;
 
 namespace VCProjectGallery.Data
 {
 	public class Startup
 	{
 		private readonly string _allPolicy = "All";
+		private readonly string _clientAppFolder = "wwwroot";
 
 		public Startup(IConfiguration configuration, IWebHostEnvironment env)
 		{
@@ -59,6 +61,8 @@ namespace VCProjectGallery.Data
 				options.JsonSerializerOptions.ReferenceHandler =ReferenceHandler.Preserve;
 				options.JsonSerializerOptions.AllowTrailingCommas = true;
 			});
+
+			services.AddSpaStaticFiles(config => config.RootPath = _clientAppFolder);
 
 			// For Swagger 
 			services.AddSwaggerGen(options =>
@@ -195,6 +199,8 @@ namespace VCProjectGallery.Data
 
 			app.UseRouting();
 
+			app.UseSpaStaticFiles();
+
 			app.UseCors(_allPolicy);
 
 			app.UseAuthentication();
@@ -204,6 +210,19 @@ namespace VCProjectGallery.Data
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+			});
+
+			app.UseSpa(spa =>
+			{
+				if (env.IsDevelopment())
+					spa.Options.SourcePath = _clientAppFolder;
+				else
+					spa.Options.SourcePath = "dist";
+
+				if (env.IsDevelopment())
+				{
+					spa.UseVueCli(npmScript: "serve");
+				}
 			});
 		}
 	}
