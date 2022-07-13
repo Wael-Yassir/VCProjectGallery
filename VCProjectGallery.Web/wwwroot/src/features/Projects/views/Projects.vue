@@ -252,7 +252,7 @@ export default {
       this.close();
     },
     confirmDelete() {
-      ApiService.delete(this.selected.ID)
+      ApiService.delete(this.selected.id)
         .then((res) => {
           this.getData();
           console.log(res);
