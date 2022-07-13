@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark> </v-app-bar>
+    <v-app-bar app color="primary" dark>
+
+    </v-app-bar>
 
     <v-main>
       <router-view />
@@ -9,6 +11,7 @@
 </template>
 
 <script>
+
 export default {
   name: "App",
 
@@ -19,7 +22,7 @@ export default {
 </script>
 
 <style>
-html * {
-  font-family: Karla, serif;
-}
+  html * {
+    font-family: Karla, serif;
+  }
 </style>
