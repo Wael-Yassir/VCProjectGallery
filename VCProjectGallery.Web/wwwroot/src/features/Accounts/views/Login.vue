@@ -104,15 +104,15 @@ export default {
       this.loading = true;
 
       const credential = {
-        Username: this.userName,
-        Password: this.password,
+        username: this.userName,
+        password: this.password,
       };
 
       this.$store
         .dispatch("login", credential)
         .then(() => {
           this.loading = false;
-          this.$store.commit("setUser", { Username: credential.Username });
+          this.$store.commit("setUser", { Username: credential.username });
           this.$router.push("/projects");
         })
         .catch(() => {

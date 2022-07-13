@@ -57,14 +57,14 @@
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           :rules="rules"
-                          v-model="selected.Name"
+                          v-model="selected.name"
                           label="Project Name"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           :rules="rules"
-                          v-model="selected.Client"
+                          v-model="selected.client"
                           label="Client"
                         ></v-text-field>
                       </v-col>
@@ -73,14 +73,14 @@
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           :rules="rules"
-                          v-model="selected.Budget"
+                          v-model="selected.budget"
                           label="Budget"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           :rules="rules"
-                          v-model="selected.Location"
+                          v-model="selected.location"
                           label="Location"
                         ></v-text-field>
                       </v-col>
@@ -89,7 +89,7 @@
                       <v-col cols="12" sm="12" md="12">
                         <v-text-field
                           :rules="rules"
-                          v-model="selected.Description"
+                          v-model="selected.description"
                           label="Description"
                         ></v-text-field>
                       </v-col>
@@ -102,9 +102,7 @@
                   <v-btn color="blue darken-1" text @click="close">
                     Cancel
                   </v-btn>
-                  <v-btn color="blue darken-1" text @click="save">
-                    Save
-                  </v-btn>
+                  <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -130,13 +128,13 @@
           </v-toolbar>
         </template>
 
-        <template v-slot:[`item.Budget`]="{ item }">
+        <template v-slot:[`item.budget`]="{ item }">
           <span
-            >{{ item.Budget }}
+            >{{ item.budget }}
             {{
-              item.BudgetCurrency?.toLowerCase() === "us-dollar"
+              item.budgetCurrency?.toLowerCase() === "us-dollar"
                 ? "$"
-                : item.BudgetCurrency
+                : item.budgetCurrency
             }}</span
           >
         </template>
@@ -168,11 +166,11 @@ export default {
       },
       loadingState: false,
       headers: [
-        { text: "Name", value: "Name", width: "200px" },
-        { text: "Client", value: "Client", width: "200px" },
-        { text: "Budget", value: "Budget", width: "200px" },
-        { text: "Location", value: "Location", width: "200px" },
-        { text: "Description", value: "Description" },
+        { text: "Name", value: "name", width: "200px" },
+        { text: "Client", value: "client", width: "200px" },
+        { text: "Budget", value: "budget", width: "200px" },
+        { text: "Location", value: "location", width: "200px" },
+        { text: "Description", value: "description" },
         {
           text: "Actions",
           value: "actions",
@@ -182,11 +180,11 @@ export default {
         },
       ],
       modals: {
-        update: false
+        update: false,
       },
       dialog: {
         addEdit: false,
-        delete: false
+        delete: false,
       },
       dialogDelete: false,
       editedItem: {},
@@ -195,7 +193,7 @@ export default {
       rules: [
         // Alt: Boolean(v) || "This field is required!" return false if the value is falsy (null, undefined, empty, .. etc)
         (val) => !!val || "This field is required!",
-        (val) => val?.length > 3 || "Enter at least 3 characters!"
+        (val) => val?.length > 3 || "Enter at least 3 characters!",
       ],
     };
   },
@@ -204,14 +202,14 @@ export default {
   },
   methods: {
     getData() {
+      this.loadingState = true;
       ApiService.get()
         .then((res) => {
-          this.loadingState = true;
-          this.entities = res.data.$values;
+          this.entities = res.data;
           this.loadingState = false;
         })
-        .catch((err) => {
-          console.error(err);
+        .catch(() => {
+          this.loadingState = false;
         });
     },
     edit(item) {
@@ -233,44 +231,44 @@ export default {
       // add new project
       if (this.modals.update === false) {
         ApiService.add(this.selected)
-          .then(res => {
-            this.getData()
-            console.log(res)
+          .then((res) => {
+            this.getData();
+            console.log(res);
           })
-          .catch(err => {
-            this.close()
-            console.error(err)
-          })
-      }
-      else { // update existing project
+          .catch((err) => {
+            this.close();
+            console.error(err);
+          });
+      } else {
+        // update existing project
         ApiService.update(this.selected)
-          .then(res => console.log(res))
-          .catch(err => {
-            this.close()
-            console.error(err)
-          })
+          .then((res) => console.log(res))
+          .catch((err) => {
+            this.close();
+            console.error(err);
+          });
       }
 
-      this.close()
+      this.close();
     },
     confirmDelete() {
       ApiService.delete(this.selected.ID)
-        .then(res => {
-          this.getData()
-          console.log(res)
+        .then((res) => {
+          this.getData();
+          console.log(res);
         })
-        .catch(err => {
-          this.close()
-          console.error(err)
-        })
+        .catch((err) => {
+          this.close();
+          console.error(err);
+        });
 
-      this.close()
-    }
+      this.close();
+    },
   },
   computed: {
     dialogTitle() {
       return this.modals.update === false ? "Add New Project" : "Edit Project";
-    }
+    },
   },
   watch: {},
 };
