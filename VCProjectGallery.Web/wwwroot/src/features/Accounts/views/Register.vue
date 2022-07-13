@@ -3,7 +3,7 @@
     <v-card
       class="mx-auto pb-5 pt-4 rounded-xl"
       max-width="500"
-      height="495"
+      height="525"
       style="z-index: 1000"
     >
       <v-card-title class="mx-auto justify-center flex-column">
@@ -66,6 +66,23 @@
               </v-btn>
             </v-col>
           </v-row>
+          <router-link
+            to="/login"
+            class="
+              light-blue--text
+              text--darken-3
+              font-weight-black
+              text-decoration-underline
+            "
+            style="
+              display: block;
+              text-align: center;
+              margin-top: 15px;
+              cursor: pointer;
+            "
+          >
+            Login
+          </router-link>
         </v-container>
       </v-form>
     </v-card>
