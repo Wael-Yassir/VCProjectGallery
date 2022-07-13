@@ -9,16 +9,12 @@ namespace VCProjectGallery.Web.Base
 	{
         public static Guid GetUserID(this ControllerBase controller)
         {
-            //TODO: change line below
-            return new Guid();
-            return new Guid(controller.HttpContext.User.Claims.Where(w => w.Type == ClaimTypes.NameIdentifier)
+            return new Guid(controller.HttpContext.User.Claims.Where(w => w.Type == "jti")
                 .FirstOrDefault().Value);
         }
 
         public static string GetUserName(this ControllerBase controller)
         {
-            //TODO: change line below
-            return "System";
             return controller.HttpContext.User.Claims.Where(w => w.Type == ClaimTypes.Name)
                 .FirstOrDefault().Value;
         }
