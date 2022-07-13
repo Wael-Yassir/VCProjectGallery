@@ -5,15 +5,13 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Models", "VCProjectGallery.Models\VCProjectGallery.Models.csproj", "{0B707C9B-91C1-4A62-9AD1-98294D22C94E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Web", "VCProjectGallery.Web\VCProjectGallery.Web.csproj", "{D411E901-1929-4776-91B7-54876DF5B280}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Docs", "_Docs", "{200DFD64-AA18-47F6-936A-CA279A233599}"
 	ProjectSection(SolutionItems) = preProject
 		Docs\Entities.png = Docs\Entities.png
 		Docs\Features.xlsx = Docs\Features.xlsx
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.API", "VCProjectGallery.Data\VCProjectGallery.API.csproj", "{C17327F7-328D-43C5-8F09-958817341FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Web", "VCProjectGallery.Web\VCProjectGallery.Web.csproj", "{C17327F7-328D-43C5-8F09-958817341FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{0B707C9B-91C1-4A62-9AD1-98294D22C94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B707C9B-91C1-4A62-9AD1-98294D22C94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B707C9B-91C1-4A62-9AD1-98294D22C94E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D411E901-1929-4776-91B7-54876DF5B280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D411E901-1929-4776-91B7-54876DF5B280}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D411E901-1929-4776-91B7-54876DF5B280}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D411E901-1929-4776-91B7-54876DF5B280}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C17327F7-328D-43C5-8F09-958817341FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C17327F7-328D-43C5-8F09-958817341FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C17327F7-328D-43C5-8F09-958817341FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
