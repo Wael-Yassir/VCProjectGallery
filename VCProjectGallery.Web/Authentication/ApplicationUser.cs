@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace VCProjectGallery.API.Authentication
+namespace VCProjectGallery.Web.Authentication
 {
 	public class ApplicationUser : IdentityUser
 	{

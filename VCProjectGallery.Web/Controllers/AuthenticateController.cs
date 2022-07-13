@@ -9,9 +9,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using VCProjectGallery.API.Authentication;
+using VCProjectGallery.Web.Authentication;
 
-namespace VCProjectGallery.API.Controllers
+namespace VCProjectGallery.Web.Controllers
 {
 	[Route("Api/[controller]/[action]")]
 	[ApiController]

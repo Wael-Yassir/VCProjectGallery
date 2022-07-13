@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace VCProjectGallery.Data.Migrations
+namespace VCProjectGallery.Web.Migrations
 {
     public partial class Add_IdentityModels : Migration
     {

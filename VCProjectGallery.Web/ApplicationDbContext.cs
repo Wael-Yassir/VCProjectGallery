@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VCProjectGallery.API.Authentication;
+using VCProjectGallery.Web.Authentication;
 using VCProjectGallery.Models.Project;
 
-namespace VCProjectGallery.Data
+namespace VCProjectGallery.Web
 {
 	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 	{

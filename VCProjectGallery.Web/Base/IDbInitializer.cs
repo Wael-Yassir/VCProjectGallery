@@ -1,4 +1,4 @@
-﻿namespace VCProjectGallery.Data.Base
+﻿namespace VCProjectGallery.Web.Base
 {
 	public interface IDbInitializer
 	{

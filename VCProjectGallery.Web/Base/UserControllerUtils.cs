@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 
-namespace VCProjectGallery.Data.Base
+namespace VCProjectGallery.Web.Base
 {
 	public static class UserControllerUtils
 	{

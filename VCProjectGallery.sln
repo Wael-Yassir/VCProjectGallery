@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Docs", "_Docs", "{200DFD64
 		Docs\Features.xlsx = Docs\Features.xlsx
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.API", "VCProjectGallery.Data\VCProjectGallery.API.csproj", "{C17327F7-328D-43C5-8F09-958817341FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCProjectGallery.Web", "VCProjectGallery.Web\VCProjectGallery.Web.csproj", "{C17327F7-328D-43C5-8F09-958817341FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

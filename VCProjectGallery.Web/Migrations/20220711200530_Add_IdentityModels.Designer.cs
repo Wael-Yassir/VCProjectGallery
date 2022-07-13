@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VCProjectGallery.Data;
+using VCProjectGallery.Web;
 
-namespace VCProjectGallery.Data.Migrations
+namespace VCProjectGallery.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220711200530_Add_IdentityModels")]
@@ -152,7 +152,7 @@ namespace VCProjectGallery.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("VCProjectGallery.API.Authentication.ApplicationUser", b =>
+            modelBuilder.Entity("VCProjectGallery.Web.Authentication.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -361,7 +361,7 @@ namespace VCProjectGallery.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("VCProjectGallery.API.Authentication.ApplicationUser", null)
+                    b.HasOne("VCProjectGallery.Web.Authentication.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -370,7 +370,7 @@ namespace VCProjectGallery.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("VCProjectGallery.API.Authentication.ApplicationUser", null)
+                    b.HasOne("VCProjectGallery.Web.Authentication.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -385,7 +385,7 @@ namespace VCProjectGallery.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VCProjectGallery.API.Authentication.ApplicationUser", null)
+                    b.HasOne("VCProjectGallery.Web.Authentication.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -394,7 +394,7 @@ namespace VCProjectGallery.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("VCProjectGallery.API.Authentication.ApplicationUser", null)
+                    b.HasOne("VCProjectGallery.Web.Authentication.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

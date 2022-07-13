@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace VCProjectGallery.Data
+namespace VCProjectGallery.Web
 {
     public class Program
     {

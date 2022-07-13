@@ -12,16 +12,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using VCProjectGallery.Data.Base;
+using VCProjectGallery.Web.Base;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
-using VCProjectGallery.API.Authentication;
+using VCProjectGallery.Web.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using VueCliMiddleware;
 
-namespace VCProjectGallery.Data
+namespace VCProjectGallery.Web
 {
 	public class Startup
 	{
@@ -67,7 +67,7 @@ namespace VCProjectGallery.Data
 			// For Swagger 
 			services.AddSwaggerGen(options =>
 			{
-				options.SwaggerDoc("v1", new OpenApiInfo { Title = "VCProjectGallery.API", Version = "v1" });
+				options.SwaggerDoc("v1", new OpenApiInfo { Title = "VCProjectGallery.Web", Version = "v1" });
 				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 				{
 					In = ParameterLocation.Header,
@@ -192,7 +192,7 @@ namespace VCProjectGallery.Data
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VCProjectGallery.API v1"));
+				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VCProjectGallery.Web v1"));
 			}
 
 			app.UseHttpsRedirection();

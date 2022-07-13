@@ -1,4 +1,4 @@
-﻿namespace VCProjectGallery.API.Authentication
+﻿namespace VCProjectGallery.Web.Authentication
 {
 	public class UserRoles
 	{

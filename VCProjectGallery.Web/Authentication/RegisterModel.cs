@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VCProjectGallery.API.Authentication
+namespace VCProjectGallery.Web.Authentication
 {
 	public class RegisterModel
 	{

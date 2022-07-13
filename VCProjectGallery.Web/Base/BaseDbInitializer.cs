@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace VCProjectGallery.Data.Base
+namespace VCProjectGallery.Web.Base
 {
     public class BaseDbInitializer<C> : IDbInitializer where C : DbContext
     {

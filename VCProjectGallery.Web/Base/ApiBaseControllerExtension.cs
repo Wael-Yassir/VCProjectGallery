@@ -2,7 +2,7 @@
 using System;
 using VCProjectGallery.Models.Base;
 
-namespace VCProjectGallery.Data.Base
+namespace VCProjectGallery.Web.Base
 {
 	public static class ApiBaseControllerExtension
 	{

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VCProjectGallery.Models.Base;
 
-namespace VCProjectGallery.Data.Base
+namespace VCProjectGallery.Web.Base
 {
 	[ApiController]
 	[Route("Api/[controller]/[action]")]

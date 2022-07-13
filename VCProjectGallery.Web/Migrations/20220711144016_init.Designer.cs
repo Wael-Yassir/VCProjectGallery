@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VCProjectGallery.Data;
+using VCProjectGallery.Web;
 
-namespace VCProjectGallery.Data.Migrations
+namespace VCProjectGallery.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220711144016_init")]

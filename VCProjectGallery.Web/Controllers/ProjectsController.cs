@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using VCProjectGallery.Data.Base;
+using VCProjectGallery.Web.Base;
 using VCProjectGallery.Models;
 using VCProjectGallery.Models.Project;
 using Microsoft.EntityFrameworkCore;
 using VCProjectGallery.Models.Base;
 using Microsoft.AspNetCore.Authorization;
-using VCProjectGallery.API.Authentication;
+using VCProjectGallery.Web.Authentication;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace VCProjectGallery.Data.Controllers
+namespace VCProjectGallery.Web.Controllers
 {
 	[Authorize]
     public class ProjectsController : ApiBaseController<Project>
