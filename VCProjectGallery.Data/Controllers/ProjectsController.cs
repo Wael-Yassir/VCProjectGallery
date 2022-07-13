@@ -16,8 +16,6 @@ using Microsoft.AspNetCore.JsonPatch;
 namespace VCProjectGallery.Data.Controllers
 {
 	[Authorize]
-    [ApiController]
-    [Route("[controller]")]
     public class ProjectsController : ApiBaseController<Project>
     {
 

@@ -13,7 +13,8 @@ using VCProjectGallery.Models.Base;
 namespace VCProjectGallery.Data.Base
 {
 	[ApiController]
-	[Route("[controller]")]
+	[Route("Api/[controller]/[action]")]
+
 	public abstract class ApiBaseController<T> : ControllerBase
 		where T : PublicBaseClass
 	{
@@ -95,6 +96,28 @@ namespace VCProjectGallery.Data.Base
 				{
 					throw;
 				}
+			}
+			return Ok(entity);
+		}
+
+		[HttpPut("{key}")]
+		public virtual async Task<IActionResult> Put(Guid key, [FromBody] T entity)
+		{
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			var _entity = await _context.Set<T>().FindAsync(key);
+			this.SetUpdatedByUser(entity);
+
+			_context.Set<T>().Remove(_entity);
+			_context.Set<T>().Add(entity);
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e);
 			}
 			return Ok(entity);
 		}
