@@ -56,12 +56,14 @@
                     <v-row>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
+                          :rules="rules"
                           v-model="selected.Name"
                           label="Project Name"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
+                          :rules="rules"
                           v-model="selected.Client"
                           label="Client"
                         ></v-text-field>
@@ -70,12 +72,14 @@
                     <v-row>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
+                          :rules="rules"
                           v-model="selected.Budget"
                           label="Budget"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
+                          :rules="rules"
                           v-model="selected.Location"
                           label="Location"
                         ></v-text-field>
@@ -84,6 +88,7 @@
                     <v-row>
                       <v-col cols="12" sm="12" md="12">
                         <v-text-field
+                          :rules="rules"
                           v-model="selected.Description"
                           label="Description"
                         ></v-text-field>
@@ -186,6 +191,12 @@ export default {
       dialogDelete: false,
       editedItem: {},
       defaultItem: {},
+      // https://stackoverflow.com/questions/784929/what-is-the-not-not-operator-in-javascript
+      rules: [
+        // Alt: Boolean(v) || "This field is required!" return false if the value is falsy (null, undefined, empty, .. etc)
+        (val) => !!val || "This field is required!",
+        (val) => val?.length > 3 || "Enter at least 3 characters!"
+      ],
     };
   },
   mounted() {

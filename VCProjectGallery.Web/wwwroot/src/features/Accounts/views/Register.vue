@@ -3,25 +3,35 @@
     <v-card
       class="mx-auto pb-5 pt-4 rounded-xl"
       max-width="500"
-      height="450"
+      height="475"
       style="z-index: 1000"
     >
       <v-card-title class="mx-auto justify-center flex-column">
         <br />
-        <strong class="text--secondary">Log in to Your Account</strong>
+        <strong class="text--secondary">Register a New Account</strong>
         <!-- <i class="fal fa-sign-in mr-2" style="line-height: 0"></i>Log in to your account -->
       </v-card-title>
       <v-form v-model="valid" @submit.prevent="submit" class="pa-3 mt-0 pt-0">
         <v-divider></v-divider>
         <v-container>
-          <v-row align="center" justify="center" style="height: 200px">
+          <v-row align="center" justify="center" style="height: 275px">
             <v-col cols="12" md="10">
               <v-text-field
                 v-model="userName"
                 :rules="rules"
-                label="User Name"
+                label="Name"
                 placeholder="user"
-              ></v-text-field>
+                class="pb-3"
+              >
+              </v-text-field>
+              <v-text-field
+                v-model="userEmail"
+                :rules="rules"
+                label="Email"
+                placeholder="person@example.com"
+                class="pb-3"
+              >
+              </v-text-field>
               <v-text-field
                 v-model="password"
                 :append-icon="passwordIsVisible ? 'fal fa-eye' : 'fal fa-eye-slash'"
@@ -30,7 +40,9 @@
                 label="Password"
                 placeholder="Password"
                 @click:append="passwordIsVisible = !passwordIsVisible"
-              ></v-text-field>
+                class="pb-3"
+              >
+              </v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center" aling="center">
@@ -42,7 +54,7 @@
                 :loading="loading"
               >
                 <i class="fal fa-sign-in mr-2" style="line-height: 0"></i>
-                Login
+                Register
               </v-btn>
             </v-col>
           </v-row>
@@ -63,23 +75,26 @@ export default {
       passwordIsVisible: false,
       password: "",
       userName: "",
+      userEmail: "",
       rules: [
         (val) => !!val || "This field is required!",
-      ],
+      ]
     }
   },
   methods: {
     clear() {
       this.userName = ""
       this.password = ""
+      this.userEmail = ""
     },
     submit() {
       const credential = {
         "Username": this.userName,
+        "Email": this.userEmail,
         "Password": this.password
       }
 
-      ApiService.login(credential)
+      ApiService.register(credential)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
