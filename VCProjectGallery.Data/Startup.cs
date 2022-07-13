@@ -26,7 +26,7 @@ namespace VCProjectGallery.Data
 	public class Startup
 	{
 		private readonly string _allPolicy = "All";
-		private readonly string _clientAppFolder = "wwwroot";
+		private readonly string _clientAppFolder = "client-app";
 
 		public Startup(IConfiguration configuration, IWebHostEnvironment env)
 		{
