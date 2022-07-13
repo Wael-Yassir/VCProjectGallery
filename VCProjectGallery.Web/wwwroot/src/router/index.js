@@ -9,6 +9,10 @@ const routes = [
   ...accountsRoutes,
   ...projectsRoutes,
   {
+    path: '/',
+    redirect: '/login'
+  },
+  {
     path: '*',
     name: 'error404',
     component: () => import('../features/Shared/views/Error404.vue')
