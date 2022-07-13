@@ -10,7 +10,7 @@ const routes = [
   ...projectsRoutes,
   {
     path: '/',
-    redirect: '/register'
+    redirect: '/login'
   },
   {
     path: '*',
