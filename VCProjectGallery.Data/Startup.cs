@@ -22,42 +22,42 @@ using System.Text;
 
 namespace VCProjectGallery.Data
 {
-    public class Startup
-    {
-        private readonly string _allPolicy = "All";
+	public class Startup
+	{
+		private readonly string _allPolicy = "All";
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
-        {
-            Configuration = configuration;
-            Environment = env;
-        }
+		public Startup(IConfiguration configuration, IWebHostEnvironment env)
+		{
+			Configuration = configuration;
+			Environment = env;
+		}
 
 		public IConfiguration Configuration { get; }
 		public IWebHostEnvironment Environment { get; }
 
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddCors(option =>
-            {
-                // TODO: Change on publish
-                option.AddPolicy(name: _allPolicy, 
-                                 policy =>
-                                 {
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddCors(option =>
+			{
+				// TODO: Change on publish
+				option.AddPolicy(name: _allPolicy,
+								 policy =>
+								 {
 									 policy.AllowAnyOrigin()
 										   .AllowAnyHeader()
 										   .AllowAnyMethod();
-                                 });
-            });
+								 });
+			});
 
 			services.AddControllers()
+			.AddNewtonsoftJson()
 			.AddJsonOptions(options =>
 			{
 				options.JsonSerializerOptions.PropertyNamingPolicy = null;
 				options.JsonSerializerOptions.ReferenceHandler =ReferenceHandler.Preserve;
 				options.JsonSerializerOptions.AllowTrailingCommas = true;
-
 			});
 
 			// For Swagger 
@@ -193,18 +193,18 @@ namespace VCProjectGallery.Data
 
 			app.UseHttpsRedirection();
 
-            app.UseRouting();
-            
-            app.UseCors(_allPolicy);
+			app.UseRouting();
 
-            app.UseAuthentication();
+			app.UseCors(_allPolicy);
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
-    }
+			app.UseEndpoints(endpoints =>
+			{
+				endpoints.MapControllers();
+			});
+		}
+	}
 }
